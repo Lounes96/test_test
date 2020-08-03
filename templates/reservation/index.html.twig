@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation!{% endblock %}
+
+{% block body %}
+
+<h1>Reservez votre chalet!</h1>
+
+{{form_start(formReservation) }}
+
+{{ form_row(formReservation.nom, {'attr': {'placeholder': "Nom"}}) }}
+{{ form_row(formReservation.prenom, {'attr': {'placeholder': "Prenom"}}) }}
+{{ form_row(formReservation.entreprise, {'attr': {'placeholder': "Entreprise"}}) }}
+{{ form_row(formReservation.siret, {'attr': {'placeholder': "Siret"}}) }}
+{{ form_row(formReservation.numero, {'attr': {'placeholder': "Telephone"}}) }}
+{{ form_row(formReservation.email, {'attr': {'placeholder': "Email"}}) }}
+{{ form_row(formReservation.type, {'attr': {'placeholder': "Type"}}) }}
+
+
+<button type="submit" class="btn btn-success">Reserver</button>
+{{ form_end(formReservation) }}
+
+
+{% endblock %}
