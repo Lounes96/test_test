@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des commandes !{% endblock %}
+
+{% block body %}
+
+</br>
+<h1> Commandes en attente </h1>
+</br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Siret</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {%for client in reservations %}
+    <tr>
+
+      <td>{{ client.nom }}</td>
+      <td>{{ client.prenom }}</td>
+      <td>{{ client.entreprise }}</td>
+      <td>{{ client.siret }}</td>
+      <td>{{ client.numero }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.type }}</td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+</br>
+<h1>Assignation des chalets</h1>
+</br>
+{% endblock %}

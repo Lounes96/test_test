@@ -34,8 +34,8 @@ class ReservationController extends AbstractController
                 if($chalet->getQuantite() > 0 && $chalet2->getQuantite() > 0) {
                     $form->add('type', ChoiceType::class, [
                         'choices'  => [
-                            '2x2' => '1',
-                            '2x3' => '2',],
+                            '2x2' => '2x2',
+                            '2x3' => '2x3',],
                             'expanded' => 'true',
                         
                     ]);
@@ -43,7 +43,7 @@ class ReservationController extends AbstractController
                 if($chalet->getQuantite() > 0 && $chalet2->getQuantite() == 0) {
                     $form->add('type', ChoiceType::class, [
                         'choices'  => [
-                            '2x2' => '1'
+                            '2x2' => '2x2'
                         ],
                         'expanded' => 'true',
                     ]);
@@ -51,7 +51,7 @@ class ReservationController extends AbstractController
                 if($chalet->getQuantite() == 0 && $chalet2->getQuantite() > 0) {
                     $form->add('type', ChoiceType::class, [
                         'choices'  => [
-                            '2x3' => '2'
+                            '2x3' => '2x3'
                         ],
                         'expanded' => 'true',
                     ]);
@@ -64,7 +64,7 @@ class ReservationController extends AbstractController
 
                 if($form->isSubmitted() && $form->isValid()) {
 
-                    if ($reservation->getType() == '1') {
+                    if ($reservation->getType() == '2x2') {
                         $chalet = $repo->findOneBy(['type' => '2x2']);
                         $chalet->setQuantite($chalet->getQuantite()-1);
                         $manager->persist($reservation);
