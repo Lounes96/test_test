@@ -52,6 +52,11 @@ class Client
      */
     private $type;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Emplacement::class, mappedBy="client", cascade={"persist", "remove"})
+     */
+    private $emplacement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,24 @@ class Client
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getEmplacement(): ?Emplacement
+    {
+        return $this->emplacement;
+    }
+
+    public function setEmplacement(?Emplacement $emplacement): self
+    {
+        $this->emplacement = $emplacement;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newClient = null === $emplacement ? null : $this;
+        if ($emplacement->getClient() !== $newClient) {
+            $emplacement->setClient($newClient);
+        }
 
         return $this;
     }

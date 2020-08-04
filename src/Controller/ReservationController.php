@@ -76,7 +76,7 @@ class ReservationController extends AbstractController
                         $manager->persist($chalet);
                 }
                 $manager->flush();
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('succes');
             }
         return $this->render('reservation/index.html.twig', [
             'formReservation' => $form->createView()

@@ -18,11 +18,15 @@
       <th scope="col">Telephone</th>
       <th scope="col">Email</th>
       <th scope="col">Type</th>
+      <th scope="col">Assigner un chalet</th>
+      <th scope="col">Valider</th>
+      
+
       
     </tr>
   </thead>
   <tbody>
-  {%for client in reservations %}
+  {% for client in reservations %}
     <tr>
 
       <td>{{ client.nom }}</td>
@@ -39,6 +43,32 @@
 </table>
 
 </br>
-<h1>Assignation des chalets</h1>
+<h1>Commande terminé</h1>
 </br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Type</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Client</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+{% for emplacement in emplacements %}
+    <tr>
+
+      <td>{{ emplacement.nom }}</td>
+      <td>{{ emplacement.type }}</td>
+      {% if emplacement.statut == 0 %}<td>Libre</td> {% elseif emplacement.statut == 1 %}<td>Reservé</td> {% endif %}
+      <td>{{ emplacement.client }}</td>
+      
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
 {% endblock %}
