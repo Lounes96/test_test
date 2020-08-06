@@ -28,7 +28,7 @@
   <tbody>
   {% for client in reservations %}
     <tr>
-
+{% if client.statut == 0 %}
       <td>{{ client.nom }}</td>
       <td>{{ client.prenom }}</td>
       <td>{{ client.entreprise }}</td>
@@ -36,7 +36,21 @@
       <td>{{ client.numero }}</td>
       <td>{{ client.email }}</td>
       <td>{{ client.type }}</td>
+      
+      <td><select>
+        {% if client.type == '2x2' %}
+          {% for chalet in chalets2 %}
+            <option>{{chalet.nom}}</option>
+          {% endfor %}
+        {% elseif client.type == '2x3' %}
+          {% for chalet in chalets3 %}
+            <option>{{chalet.nom}}</option>
+          {% endfor %}
+        {% endif %}
+      </select></td>
+      <td><button class="btn btn-primary" type="submit"> valider </button></td>
     </tr>
+    {% endif %}
     {% endfor %}
     
   </tbody>
@@ -60,12 +74,12 @@
   <tbody>
 {% for emplacement in emplacements %}
     <tr>
-
+{% if emplacement.statut == 1 %}
       <td>{{ emplacement.nom }}</td>
       <td>{{ emplacement.type }}</td>
       {% if emplacement.statut == 0 %}<td>Libre</td> {% elseif emplacement.statut == 1 %}<td>Reservé</td> {% endif %}
       <td>{{ emplacement.client }}</td>
-      
+      {% endif %}
     </tr>
     {% endfor %}
     

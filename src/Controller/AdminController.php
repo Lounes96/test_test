@@ -20,15 +20,17 @@ class AdminController extends AbstractController
 
         $emplacements = $repo2->findAll();
 
-        
 
+        $chalets2 = $repo2->findBy(array('statut' => 0, 'type' => '2x2'));
 
-
+        $chalets3 = $repo2->findBy(array('statut' => 0, 'type' => '2x3'));
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'reservations' => $reservations,
-            'emplacements' => $emplacements
+            'emplacements' => $emplacements,
+            'chalets2' => $chalets2,
+            'chalets3' => $chalets3
            
         ]);
     }
