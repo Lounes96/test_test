@@ -21,7 +21,9 @@ class AdminController extends AbstractController
             array('statut' => 0)
         );
 
-        $emplacements = $repo2->findAll();
+        $emplacements = $repo2->findBy(
+            array('statut' => 1)
+        );
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',

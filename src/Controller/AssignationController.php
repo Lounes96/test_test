@@ -57,7 +57,7 @@ class AssignationController extends AbstractController
             $manager->persist($cechalet[0]);
 
             $manager->flush();
-            return $this->redirectToRoute('succes');
+            return $this->redirectToRoute('succes-assigner');
         }
 
         return $this->render('assignation/index.html.twig', [

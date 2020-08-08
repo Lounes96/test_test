@@ -49,7 +49,7 @@
 </table>
 
 </br>
-<h1>Commande terminé</h1>
+<h1>Commandes terminées</h1>
 </br>
 
 <table class="table">
@@ -59,21 +59,21 @@
       <th scope="col">Type</th>
       <th scope="col">Statut</th>
       <th scope="col">Client</th>
-      
-      
+      <th scope="col">Téléphone</th>
+      <th scope="col">Mail</th>
     </tr>
   </thead>
   <tbody>
-{% for emplacement in emplacements %}
+  {% for emplacement in emplacements %}
     <tr>
-
       <td>{{ emplacement.nom }}</td>
       <td>{{ emplacement.type }}</td>
       {% if emplacement.statut == 0 %}<td>Libre</td> {% elseif emplacement.statut == 1 %}<td>Reservé</td> {% endif %}
-      <td>{{ emplacement.client }}</td>
-      
+      <td>{{ emplacement.client.prenom }} {{ emplacement.client.nom }}</td>
+      <td>{{ emplacement.client.numero }}</td>
+      <td>{{ emplacement.client.email }}</td>
     </tr>
-    {% endfor %}
+  {% endfor %}
     
   </tbody>
 </table>

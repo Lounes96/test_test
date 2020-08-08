@@ -6,6 +6,7 @@ use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 
 class ReservationType extends AbstractType
 {
@@ -16,9 +17,8 @@ class ReservationType extends AbstractType
             ->add('prenom')
             ->add('entreprise')
             ->add('siret')
-            ->add('numero')
+            ->add('numero', TelType::class)
             ->add('email')
-            
         ;
     }
 

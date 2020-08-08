@@ -16,4 +16,14 @@ class SuccesController extends AbstractController
             'controller_name' => 'SuccesController',
         ]);
     }
+
+    /**
+     * @Route("/succes-assigner", name="succes-assigner")
+     */
+    public function assignation()
+    {
+        return $this->render('succes/assigner.html.twig', [
+            'controller_name' => 'SuccesController',
+        ]);
+    }
 }

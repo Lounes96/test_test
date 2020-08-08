@@ -67,14 +67,13 @@ class ReservationController extends AbstractController
                     if ($reservation->getType() == '2x2') {
                         $chalet = $repo->findOneBy(['type' => '2x2']);
                         $chalet->setQuantite($chalet->getQuantite()-1);
-                        $manager->persist($reservation);
-                        $manager->persist($chalet);
                     } else {
                         $chalet = $repo->findOneBy(['type' => '2x3']);
                         $chalet->setQuantite($chalet->getQuantite()-1);
-                        $manager->persist($reservation);
-                        $manager->persist($chalet);
                 }
+                $reservation->setStatut(0);
+                $manager->persist($reservation);
+                $manager->persist($chalet);
                 $manager->flush();
                 return $this->redirectToRoute('succes');
             }
