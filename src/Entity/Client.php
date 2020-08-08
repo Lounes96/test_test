@@ -57,6 +57,11 @@ class Client
      */
     private $emplacement;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statut;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -160,6 +165,18 @@ class Client
         if ($emplacement->getClient() !== $newClient) {
             $emplacement->setClient($newClient);
         }
+
+        return $this;
+    }
+
+    public function getStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(bool $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

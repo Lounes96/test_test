@@ -19,9 +19,6 @@
       <th scope="col">Email</th>
       <th scope="col">Type</th>
       <th scope="col">Assigner un chalet</th>
-      <th scope="col">Valider</th>
-      
-
       
     </tr>
   </thead>
@@ -31,11 +28,20 @@
 
       <td>{{ client.nom }}</td>
       <td>{{ client.prenom }}</td>
-      <td>{{ client.entreprise }}</td>
-      <td>{{ client.siret }}</td>
+      {% if client.entreprise %}
+        <td>{{ client.entreprise }}</td>
+      {% else %}
+        <td>Aucune entreprise</td>
+      {% endif %}
+      {% if client.siret %}
+        <td>{{ client.siret }}</td>
+      {% else %}
+        <td>Pas de siret</td>
+      {% endif %}
       <td>{{ client.numero }}</td>
       <td>{{ client.email }}</td>
       <td>{{ client.type }}</td>
+      <td><a href="{{ path ('assignation', {id: client.id}) }}"><button type="submit" class="btn btn-primary">Assigner</button></a></td>
     </tr>
     {% endfor %}
     

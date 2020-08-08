@@ -8,6 +8,7 @@ use App\Repository\ClientRepository;
 use App\Repository\EmplacementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Client;
 
 class AdminController extends AbstractController
 {
@@ -16,20 +17,16 @@ class AdminController extends AbstractController
      */
     public function index(EntityManagerInterface $manager, Request $request, ClientRepository $repo, EmplacementRepository $repo2)
     {
-        $reservations = $repo->findAll();
+        $reservations = $repo->findBy(
+            array('statut' => 0)
+        );
 
         $emplacements = $repo2->findAll();
-
-        
-
-
-
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'reservations' => $reservations,
             'emplacements' => $emplacements
-           
         ]);
     }
 
