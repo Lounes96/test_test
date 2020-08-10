@@ -2,29 +2,24 @@
 
 namespace App\Form;
 
+use App\Entity\Emplacement;
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class ReservationType extends AbstractType
+class AssignationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('entreprise')
-            ->add('siret')
-            ->add('numero', TelType::class)
-            ->add('email')
-        ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'data_class' => Emplacement::class,
             'data_class' => Client::class,
         ]);
     }
