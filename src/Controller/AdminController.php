@@ -28,14 +28,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'reservations' => $reservations,
-<<<<<<< HEAD
-            'emplacements' => $emplacements,
-            'chalets2' => $chalets2,
-            'chalets3' => $chalets3
-           
-=======
             'emplacements' => $emplacements
->>>>>>> 3e41fc684f58bd3c9f2adad7d6182e28e6d30cce
         ]);
     }
 
