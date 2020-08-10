@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assigner un chalet à un client{% endblock %}
+
+{% block body %}
+
+</br>
+<h1> Assigner un chalet à un client </h1>
+</br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Siret</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Assigner un chalet</th>
+      <th scope="col">Valider</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for test in client %}
+
+    <td>{{ test.nom }}</td>
+    <td>{{ test.prenom }}</td>
+    {% if test.entreprise %}
+        <td>{{ test.entreprise }}</td>
+    {% else %}
+        <td>Aucune entreprise</td>
+    {% endif %}
+    {% if test.siret %}
+        <td>{{ test.siret }}</td>
+    {% else %}
+        <td>Pas de siret</td>
+    {% endif %}
+    <td>{{ test.numero }}</td>
+    <td>{{ test.email }}</td>
+    <td>{{ test.type }}</td>
+
+    <td>
+        <select>
+            {% for chalet in chalets %}
+                <option>{{chalet.nom}}</option>
+            {% endfor %}
+        </select>
+    </td>
+    <td><button type="submit" class="btn btn-primary">Valider</button></td>
+
+    
+
+
+
+{% endfor %}
+{% endblock %}

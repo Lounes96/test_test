@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des commandes !{% endblock %}
+
+{% block body %}
+
+</br>
+<h1> Commandes en attente </h1>
+</br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Siret</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Assigner</th>
+      
+
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% for client in reservations %}
+    <tr>
+{% if client.statut == 0 %}
+      <td>{{ client.nom }}</td>
+      <td>{{ client.prenom }}</td>
+      <td>{{ client.entreprise }}</td>
+      <td>{{ client.siret }}</td>
+      <td>{{ client.numero }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.type }}</td>
+      <td> <a href="{{ path ('test',  {id: client.id}  ) }}"> <button class="btn btn-primary" type="submit"> Assigner </button></a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+</br>
+<h1>Commande terminé</h1>
+</br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Type</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Client</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+{% for emplacement in emplacements %}
+    <tr>
+{% if emplacement.statut == 1 %}
+      <td>{{ emplacement.nom }}</td>
+      <td>{{ emplacement.type }}</td>
+      {% if emplacement.statut == 0 %}<td>Libre</td> {% elseif emplacement.statut == 1 %}<td>Reservé</td> {% endif %}
+      <td>{{ emplacement.client }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+{% endblock %}
